@@ -17,11 +17,11 @@ public class Juego extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
 
 	private static final int ANCHO = 800;
-	private static final int ALTO = 800;
+	private static final int ALTO = 600;
 
 	private static volatile boolean corriendo = false;
 
-	private static final String NOMBRE = "Ticataquera";
+	private static final String NOMBRE = "Juego";
 
 	private static int aps = 0;
 	private static int fps = 0;
@@ -81,16 +81,16 @@ public class Juego extends Canvas implements Runnable {
 		teclado.actualizar();
 
 		if (teclado.arriba) {
-			System.out.println("arriba");
+			y++;
 		}
 		if (teclado.abajo) {
-			System.out.println("abajo");
+		    y--;
 		}
 		if (teclado.izquierda) {
-			System.out.println("izquierda");
+			x++;
 		}
 		if (teclado.derecha) {
-			System.out.println("derecha");
+			x--;
 		}
 
 		aps++;
@@ -104,13 +104,14 @@ public class Juego extends Canvas implements Runnable {
 			createBufferStrategy(3);
 			return;
 		}
+		
 		pantalla.limpiar();
 		pantalla.mostrar(x, y);
 		
 		System.arraycopy(pantalla.pixeles, 0, pixeles, 0, pixeles.length);
 		
 		//for(int i=0; i<pixeles.length;i++){
-		//	pixeles[i]= pantalla.pixeles[i];
+		//pixeles[i]= pantalla.pixeles[i];
 		//}
 		
 		Graphics g = estrategia.getDrawGraphics();
