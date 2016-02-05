@@ -17,7 +17,7 @@ public final class Pantalla {
 		this.ancho = ancho;
 		this.alto = alto;
 		
-		pixeles = new int[ancho + alto];
+		pixeles = new int[ancho * alto];
 		
 	}
 
@@ -29,18 +29,18 @@ public final class Pantalla {
 	
 	public void mostrar(final int compensacionX, final int compensacionY){
 
-		for(int y=0; y<alto;y ++){
+		for(int y = 0; y < alto; y ++){
 			int posicionY = y + compensacionY;
 			if(posicionY < 0 || posicionY >= alto){
 				continue;
 			}
-	    for(int x=0;x<ancho;x++){
+	    for(int x = 0 ; x < ancho; x++){
 	    	int posicionX = x + compensacionX;
 	    	if(posicionX < 0 || posicionX >= ancho){
 				continue;
 	    }
 	    	//Temporal
-	    	pixeles[posicionX + posicionY * ancho] = Sprite.asfalto.pixeles[(x & MASCARA_SPRITE) +  (y & MASCARA_SPRITE) * LADO_SPRITE];
+	    	pixeles[posicionX + posicionY * ancho] = Sprite.asfalto.pixeles[(x & MASCARA_SPRITE)+(y & MASCARA_SPRITE)*LADO_SPRITE];
 	    		
     }
 	}

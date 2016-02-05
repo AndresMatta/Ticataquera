@@ -12,7 +12,7 @@ public class HojaSprites {
 	private final int alto;
 
 	//Coleecion hojas de sprite
-	public static HojaSprites desierto = new HojaSprites("/texturas/Desierto.png", 320, 320);
+	public static HojaSprites desierto = new HojaSprites("/texturas/desierto.png", 320, 320);
 	
 	//Fin Sprites
 	
