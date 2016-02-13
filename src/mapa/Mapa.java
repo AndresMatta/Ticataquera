@@ -33,14 +33,30 @@ public abstract class Mapa {
     }
     
     public void mostrar(final int compensacionX, final int compensacionY, final Pantalla pantalla){
+    	pantalla.setDiferencia(compensacionX, compensacionY);
+    	
     	int o = compensacionX >> 5;
-    	int e = (compensacionX + pantalla.getAncho() >> 5);
+    	int e = (compensacionX + pantalla.getAncho() + Cuadro.LADO >> 5);
     	int n = compensacionY >> 5;
-    	int s=  (compensacionY + pantalla.getAlto() >> 5);
+    	int s=  (compensacionY + pantalla.getAlto() + Cuadro.LADO >> 5);
+    	
+    	for(int y = n; y < s; y++){
+    	for(int x = o; x < e; x++){
+    		getCuadro(x,y).mostrar(x, y, pantalla);;
+    	}
+    	}
     }
     
-    public Cuadro getCuadro(){
+    public Cuadro getCuadro(final int x, final int y){
+    	if(x < 0 || y < 0 || x >= ancho || y >= alto){
+    	    return Cuadro.VACIO;	
+    	}
     	
-    	return null;
+    	switch(cuadros[x + y *ancho]){
+    	case 0:
+    		return Cuadro.ASFALTO;
+    	default:
+    	return Cuadro.VACIO;
+    	}
     }
 }
